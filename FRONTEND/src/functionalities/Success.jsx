@@ -1,10 +1,24 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Success() {
+    const navigate = useNavigate();
+
+    const handleDashboard = () => {
+        navigate("/");
+    };
+
     return (
         <div className="Pmain">
             <nav className="navbar bg-1 fg-2">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
-                        <img src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-security-shield-logo-png-image_4135253.jpg" alt="Logo" width="30" height="24" className="d-inline-block align-text-top" />
+                        <img
+                            src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-security-shield-logo-png-image_4135253.jpg"
+                            alt="Logo"
+                            width="30"
+                            height="24"
+                            className="d-inline-block align-text-top"
+                        />
                         FinKYC
                     </a>
                     <a className="nav-link" href="#">Help?</a>
@@ -41,7 +55,7 @@ export default function Success() {
                         </div>
                     </div>
 
-                    <button className="btn btn-primary dashboard-btn">
+                    <button className="btn btn-primary dashboard-btn" onClick={handleDashboard}>
                         Go to Dashboard
                     </button>
                 </div>

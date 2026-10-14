@@ -618,20 +618,102 @@ body {
   font-weight: bold;
 }
 
-.confetti, .spark {
+.confetti,
+.spark {
   position: absolute;
 }
-.dot-1 { width: 8px; height: 8px; background: #0b63ce; top: -10px; left: 10px; border-radius: 50%; }
-.dot-2 { width: 6px; height: 6px; background: #f59e0b; top: 15px; right: -15px; border-radius: 50%; }
-.dot-3 { width: 10px; height: 10px; background: #ec4899; bottom: 0; left: -20px; border-radius: 50%; }
-.dot-4 { width: 7px; height: 7px; background: #10b981; bottom: -12px; right: 20px; border-radius: 50%; }
-.dot-5 { width: 6px; height: 6px; background: #8b5cf6; top: -15px; right: 20px; border-radius: 50%; }
-.dot-6 { width: 8px; height: 8px; background: #3b82f6; bottom: 10px; right: -25px; border-radius: 50%; }
 
-.spark-1 { width: 4px; height: 12px; background: #ef4444; top: -15px; right: 15px; transform: rotate(25deg); border-radius: 2px; }
-.spark-2 { width: 10px; height: 4px; background: #ef4444; bottom: 20px; left: -20px; border-radius: 2px; }
-.spark-3 { width: 4px; height: 10px; background: #f97316; bottom: -10px; right: 25px; transform: rotate(-30deg); border-radius: 2px; }
-.spark-4 { width: 6px; height: 6px; background: #f59e0b; top: 10px; left: -15px; border-radius: 50%; }
+.dot-1 {
+  width: 8px;
+  height: 8px;
+  background: #0b63ce;
+  top: -10px;
+  left: 10px;
+  border-radius: 50%;
+}
+
+.dot-2 {
+  width: 6px;
+  height: 6px;
+  background: #f59e0b;
+  top: 15px;
+  right: -15px;
+  border-radius: 50%;
+}
+
+.dot-3 {
+  width: 10px;
+  height: 10px;
+  background: #ec4899;
+  bottom: 0;
+  left: -20px;
+  border-radius: 50%;
+}
+
+.dot-4 {
+  width: 7px;
+  height: 7px;
+  background: #10b981;
+  bottom: -12px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.dot-5 {
+  width: 6px;
+  height: 6px;
+  background: #8b5cf6;
+  top: -15px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.dot-6 {
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  bottom: 10px;
+  right: -25px;
+  border-radius: 50%;
+}
+
+.spark-1 {
+  width: 4px;
+  height: 12px;
+  background: #ef4444;
+  top: -15px;
+  right: 15px;
+  transform: rotate(25deg);
+  border-radius: 2px;
+}
+
+.spark-2 {
+  width: 10px;
+  height: 4px;
+  background: #ef4444;
+  bottom: 20px;
+  left: -20px;
+  border-radius: 2px;
+}
+
+.spark-3 {
+  width: 4px;
+  height: 10px;
+  background: #f97316;
+  bottom: -10px;
+  right: 25px;
+  transform: rotate(-30deg);
+  border-radius: 2px;
+}
+
+.spark-4 {
+  width: 6px;
+  height: 6px;
+  background: #f59e0b;
+  top: 10px;
+  left: -15px;
+  border-radius: 50%;
+}
 
 .status-title {
   font-size: 26px;

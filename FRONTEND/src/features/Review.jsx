@@ -1,15 +1,50 @@
 import { useNavigate } from "react-router-dom";
-export default function Review() {
+
+export default function Review({ formData = {} }) {
     const navigate = useNavigate();
+
     const back = () => {
-        navigate("/nominee")
-    }
+        navigate("/nominee");
+    };
+
+    const address = () => {
+        navigate("/address");
+    };
+
+    const personal = () => {
+        navigate("/Personaldetails");
+    };
+
+    const nominee = () => {
+        navigate("/nominee");
+    };
+
+    const identity = () => {
+        navigate("/kyc");
+    };
+
+    const handleSubmit = () => {
+        navigate("/success");
+    };
+
+    // Mask account number to show only last 4 digits for privacy
+    const maskAccount = (acc) => {
+        if (!acc) return "Not provided";
+        return acc.length > 4 ? `•••• •••• ${acc.slice(-4)}` : acc;
+    };
+
     return (
         <div className="Pmain">
             <nav className="navbar bg-1 fg-2">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
-                        <img src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-security-shield-logo-png-image_4135253.jpg" alt="Logo" width="30" height="24" className="d-inline-block align-text-top" />
+                        <img
+                            src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-security-shield-logo-png-image_4135253.jpg"
+                            alt="Logo"
+                            width="30"
+                            height="24"
+                            className="d-inline-block align-text-top"
+                        />
                         FinKYC
                     </a>
                     <a className="nav-link" href="#">Help?</a>
@@ -63,13 +98,25 @@ export default function Review() {
                         <div className="review-card-content">
                             <h3>Personal Details</h3>
                             <div className="review-grid">
-                                <div><span className="review-label">Name</span><p className="review-val">Charan Varigonda</p></div>
-                                <div><span className="review-label">Email</span><p className="review-val">charan@example.com</p></div>
-                                <div><span className="review-label">Phone</span><p className="review-val">+91 98765 43210</p></div>
-                                <div><span className="review-label">Date of Birth</span><p className="review-val">15-08-2003</p></div>
+                                <div>
+                                    <span className="review-label">Name</span>
+                                    <p className="review-val">{formData.fullName || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">Email</span>
+                                    <p className="review-val">{formData.email || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">Phone</span>
+                                    <p className="review-val">{formData.phone ? `+91 ${formData.phone}` : "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">Date of Birth</span>
+                                    <p className="review-val">{formData.dob || "Not provided"}</p>
+                                </div>
                             </div>
                         </div>
-                        <button className="review-edit-btn">✏️ Edit</button>
+                        <button className="review-edit-btn" onClick={personal}>✏️ Edit</button>
                     </div>
 
                     {/* Card 2: Address Details */}
@@ -78,13 +125,25 @@ export default function Review() {
                         <div className="review-card-content">
                             <h3>Address Details</h3>
                             <div className="review-grid">
-                                <div><span className="review-label">Address</span><p className="review-val">123 Main Street</p></div>
-                                <div><span className="review-label">State</span><p className="review-val">Telangana</p></div>
-                                <div><span className="review-label">City</span><p className="review-val">Hyderabad</p></div>
-                                <div><span className="review-label">Pincode</span><p className="review-val">500001</p></div>
+                                <div>
+                                    <span className="review-label">Address</span>
+                                    <p className="review-val">{formData.street || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">State</span>
+                                    <p className="review-val">{formData.state || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">City</span>
+                                    <p className="review-val">{formData.city || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">Pincode</span>
+                                    <p className="review-val">{formData.pincode || "Not provided"}</p>
+                                </div>
                             </div>
                         </div>
-                        <button className="review-edit-btn">✏️ Edit</button>
+                        <button className="review-edit-btn" onClick={address}>✏️ Edit</button>
                     </div>
 
                     {/* Card 3: Identity Details */}
@@ -93,11 +152,17 @@ export default function Review() {
                         <div className="review-card-content">
                             <h3>Identity Details</h3>
                             <div className="review-grid">
-                                <div><span className="review-label">PAN Number</span><p className="review-val">ABCDE1234F</p></div>
-                                <div><span className="review-label">Aadhaar (Last 4 Digits)</span><p className="review-val">1234</p></div>
+                                <div>
+                                    <span className="review-label">PAN Number</span>
+                                    <p className="review-val">{formData.panNumber || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">Date of Birth (Identity)</span>
+                                    <p className="review-val">{formData.dob || "Not provided"}</p>
+                                </div>
                             </div>
                         </div>
-                        <button className="review-edit-btn">✏️ Edit</button>
+                        <button className="review-edit-btn" onClick={identity}>✏️ Edit</button>
                     </div>
 
                     {/* Card 4: Bank & Nominee Details */}
@@ -106,19 +171,31 @@ export default function Review() {
                         <div className="review-card-content">
                             <h3>Bank & Nominee Details</h3>
                             <div className="review-grid">
-                                <div><span className="review-label">Bank Name</span><p className="review-val">HDFC Bank</p></div>
-                                <div><span className="review-label">IFSC Code</span><p className="review-val">HDFC0001234</p></div>
-                                <div><span className="review-label">Account Number</span><p className="review-val">XXXXXXXX5678</p></div>
-                                <div><span className="review-label">Nominee</span><p className="review-val">Ravi Kumar</p></div>
+                                <div>
+                                    <span className="review-label">Bank Name</span>
+                                    <p className="review-val">{formData.bankName || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">IFSC Code</span>
+                                    <p className="review-val">{formData.ifsc || "Not provided"}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">Account Number</span>
+                                    <p className="review-val">{maskAccount(formData.accountNumber)}</p>
+                                </div>
+                                <div>
+                                    <span className="review-label">Nominee</span>
+                                    <p className="review-val">{formData.nomineeName || "Not provided"}</p>
+                                </div>
                             </div>
                         </div>
-                        <button className="review-edit-btn">✏️ Edit</button>
+                        <button className="review-edit-btn" onClick={nominee}>✏️ Edit</button>
                     </div>
                 </div>
 
                 <div className="bottombox">
                     <button className="btn btn-outline-primary" onClick={back}>← Back</button>
-                    <button className="btn btn-primary">Submit KYC</button>
+                    <button className="btn btn-primary" onClick={handleSubmit}>Submit KYC</button>
                 </div>
             </div>
         </div>

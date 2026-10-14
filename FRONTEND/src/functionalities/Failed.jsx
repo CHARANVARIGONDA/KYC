@@ -1,10 +1,28 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Failed() {
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+        navigate("/review");
+    };
+
+    const handleTryAgain = () => {
+        navigate("/review");
+    };
+
     return (
         <div className="Pmain">
             <nav className="navbar bg-1 fg-2">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
-                        <img src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-security-shield-logo-png-image_4135253.jpg" alt="Logo" width="30" height="24" className="d-inline-block align-text-top" />
+                        <img
+                            src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-security-shield-logo-png-image_4135253.jpg"
+                            alt="Logo"
+                            width="30"
+                            height="24"
+                            className="d-inline-block align-text-top"
+                        />
                         FinKYC
                     </a>
                     <a className="nav-link" href="#">Help?</a>
@@ -44,8 +62,8 @@ export default function Failed() {
 
                     {/* Bottom Buttons */}
                     <div className="failed-buttons">
-                        <button className="btn btn-outline-primary">← Go Back</button>
-                        <button className="btn btn-primary">Try Again</button>
+                        <button className="btn btn-outline-primary" onClick={handleGoBack}>← Go Back</button>
+                        <button className="btn btn-primary" onClick={handleTryAgain}>Try Again</button>
                     </div>
                 </div>
             </div>
