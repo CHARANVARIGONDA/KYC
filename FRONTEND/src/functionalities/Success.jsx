@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Success() {
     const navigate = useNavigate();
-
+    const location = useLocation();
+    const { id, userName } = location.state || {};
     const handleDashboard = () => {
         navigate("/");
     };
+
 
     return (
         <div className="Pmain">
@@ -45,6 +47,11 @@ export default function Success() {
                         Your KYC details have been submitted and are under verification.<br />
                         We will notify you once the process is complete.
                     </p>
+                    <p className="reference-text">
+                        Thank you, <strong>{userName || "Applicant"}</strong>!
+                        Your Application Reference ID: <code>#{id || "UNDER-REVIEW"}</code>
+                    </p>
+
 
                     {/* Estimated Time Card */}
                     <div className="time-card">

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
-
-export default function Review({ formData = {} }) {
+import { useState } from "react";
+import axios from "axios";
+export default function Review({ formData = {}, resetFormData }) {
+    const [Loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const back = () => {
@@ -23,16 +25,30 @@ export default function Review({ formData = {} }) {
         navigate("/kyc");
     };
 
-    const handleSubmit = () => {
-        navigate("/success");
-    };
-
     // Mask account number to show only last 4 digits for privacy
     const maskAccount = (acc) => {
         if (!acc) return "Not provided";
         return acc.length > 4 ? `•••• •••• ${acc.slice(-4)}` : acc;
     };
 
+    const handleSubmit = async () => {
+        try {
+            setLoading(true);
+            const res = await axios.post("http://localhost:5000/api/kyc", formData);
+
+            if (res.status === 200 || res.status === 201) {
+                if (resetFormData) {
+                    resetFormData();
+                }
+                navigate("/success", { state: { "id": res.data.user._id, "userName": res.data.user.fullName } });
+            }
+
+        } catch (err) {
+            console.error("KYC submission failed:", err);
+            setLoading(false);
+            navigate("/failed", { state: { message: err.response?.data?.message || "Failed to Submit KYC please try again" } });
+        }
+    };
     return (
         <div className="Pmain">
             <nav className="navbar bg-1 fg-2">
@@ -195,7 +211,7 @@ export default function Review({ formData = {} }) {
 
                 <div className="bottombox">
                     <button className="btn btn-outline-primary" onClick={back}>← Back</button>
-                    <button className="btn btn-primary" onClick={handleSubmit}>Submit KYC</button>
+                    <button className="btn btn-primary" onClick={handleSubmit} disabled={Loading}>{Loading ? "Submitting" : "Submit KYC"}</button>
                 </div>
             </div>
         </div>

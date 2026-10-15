@@ -8,9 +8,9 @@ import Kycverification from "./features/Kycv.jsx";
 import Nominee from "./features/Nominee.jsx";
 import Review from "./features/Review.jsx";
 
-// --- Functionalities / Status Pages (functionalities/) ---
 import Success from "./functionalities/Success.jsx";
 import Failed from "./functionalities/Failed.jsx";
+import StatusPage from "./features/StatusPage.jsx";
 import { Route, Routes } from "react-router-dom";
 export default function App() {
   // In App.jsx
@@ -29,7 +29,7 @@ export default function App() {
 
     // Identity / KYC
     panNumber: '',
-    aadhaarNumber: '',
+
 
     // Bank & Nominee
     bankName: '',
@@ -43,6 +43,31 @@ export default function App() {
       [feild]: value
     }))
   }
+  const resetFormData = () => {
+    setFormData({
+      // Personal Details
+      fullName: '',
+      dob: '',
+      email: '',
+      phone: '',
+
+      // Address Details
+      street: '',
+      city: '',
+      state: '',
+      pincode: '',
+
+      // Identity / KYC
+      panNumber: '',
+
+
+      // Bank & Nominee
+      bankName: '',
+      ifsc: '',
+      accountNumber: '',
+      nomineeName: ''
+    })
+  }
 
   return (
     <>
@@ -52,10 +77,10 @@ export default function App() {
         <Route path="/address" element={<Address formData={formData} updateFormData={updateFormData} />} />
         <Route path="/kyc" element={<Kycverification formData={formData} updateFormData={updateFormData} />} />
         <Route path="/nominee" element={<Nominee formData={formData} updateFormData={updateFormData} />} />
-        <Route path="/review" element={<Review formData={formData} />} />
+        <Route path="/review" element={<Review formData={formData} resetFormData={resetFormData} />} />
         <Route path="/success" element={<Success />} />
         <Route path="/failed" element={<Failed />} />
-
+        <Route path="/status" element={<StatusPage />} />
       </Routes>
 
 

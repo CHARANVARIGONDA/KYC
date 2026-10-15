@@ -51,8 +51,13 @@ export default function Welcome() {
                     })}
                 </div>
 
-                <div className="btn-container">
-                    <button type="button" className="btn btn-primary start-btn" onClick={handlebutton}>Start Now – Safe & Simple</button>
+                <div className="btn-container" style={{ display: "flex", gap: "14px", justifyContent: "flex-end", alignItems: "center" }}>
+                    <button type="button" className="btn btn-outline-primary" style={{ borderRadius: "30px", padding: "12px 24px", fontWeight: 600 }} onClick={() => navigate("/status")}>
+                        Track KYC Status
+                    </button>
+                    <button type="button" className="btn btn-primary start-btn" onClick={handlebutton}>
+                        Start Now – Safe & Simple
+                    </button>
                 </div>
             </div>
         </div>

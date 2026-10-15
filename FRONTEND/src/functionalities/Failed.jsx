@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Failed() {
     const navigate = useNavigate();
-
+    const location = useLocation();
     const handleGoBack = () => {
         navigate("/review");
     };
@@ -44,8 +44,9 @@ export default function Failed() {
 
                     <h1 className="status-title">KYC Submission Failed</h1>
                     <p className="status-desc">
-                        We couldn't submit your KYC details. Please try again.
+                        {location.state?.message || "We couldn't submit your KYC details. Please try again."}
                     </p>
+
 
                     {/* Possible Reasons Alert Box */}
                     <div className="reasons-alert">
